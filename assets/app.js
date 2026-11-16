@@ -42,4 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const target = document.getElementById(button.dataset.reveal);
     if (target) { target.hidden = false; button.disabled = true; }
   }));
+  const addToCartButton = document.getElementById('add-to-cart');
+  if (addToCartButton) addToCartButton.addEventListener('click', () => {
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) cartCount.textContent = '1';
+  });
 });
