@@ -1,1 +1,108 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Accessible name changed — Healer Lab</title><link rel="stylesheet" href="../assets/styles.css"></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">H</span> Healer Lab</a><span class="topbar-note">SCENARIO 03 / 07</span></header><main class="page-shell"><a class="back-link" href="../index.html">← ALL SCENARIOS</a><header class="page-header"><div><p class="scenario-kicker">SCENARIO 03 · ACCESSIBILITY</p><h1>Accessible name changed</h1><p>Explore form controls whose visible labels and accessible names are available for semantic Playwright locators.</p></div><span class="scenario-index">03 / 07</span></header><section class="demo-panel"><h2>Notification preferences</h2><p>Update your contact details and notification settings.</p><form class="demo-card" id="preferences-form"><div class="form-grid"><div class="field"><label class="field-label" for="display-name">DISPLAY NAME</label><input class="input" id="display-name" name="displayName" autocomplete="name" value="Alex Morgan"></div><div class="field"><label class="field-label" for="email-address">EMAIL ADDRESS</label><input class="input" id="email-address" name="email" type="email" autocomplete="email" value="alex@example.test"></div></div><div class="field"><label class="field-label" for="digest-frequency">EMAIL DIGEST FREQUENCY</label><select class="input" id="digest-frequency" name="digest"><option>Daily</option><option selected>Weekly</option><option>Never</option></select></div><label class="action-row" for="product-updates"><input id="product-updates" name="productUpdates" type="checkbox" checked><span class="muted">Send me product updates</span></label><div class="action-row"><button class="button" type="submit">Save preferences</button></div><div id="preferences-status" class="result-line" role="status" aria-live="polite"></div></form></section><footer class="scenario-footer"><span>SEMANTIC TARGETS: labels · select · checkbox · submit</span><a href="element-state.html">NEXT SCENARIO →</a></footer></main><script src="../assets/app.js"></script><script>document.getElementById('preferences-form').addEventListener('submit',event=>{event.preventDefault();document.getElementById('preferences-status').textContent='Preferences saved successfully.'});</script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accessible name changed — Healer Lab</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">H</span> Healer Lab
+      </a>
+      <span class="topbar-note">SCENARIO 03 / 07</span>
+    </header>
+
+    <main class="page-shell">
+      <a class="back-link" href="../index.html">← ALL SCENARIOS</a>
+
+      <header class="page-header">
+        <div>
+          <p class="scenario-kicker">SCENARIO 03 · ACCESSIBILITY</p>
+          <h1>Accessible name changed</h1>
+          <p>
+            The display name field label has changed. The remaining controls
+            retain their accessible names and can be updated as usual.
+          </p>
+        </div>
+        <span class="scenario-index">03 / 07</span>
+      </header>
+
+      <section class="demo-panel">
+        <h2>Notification preferences</h2>
+        <p>Update your contact details and notification settings.</p>
+
+        <div class="demo-layout">
+          <form class="demo-card" id="preferences-form">
+            <div class="form-grid">
+              <div class="field">
+                <label class="field-label" for="display-name">PROFILE NAME</label>
+                <input
+                  class="input"
+                  id="display-name"
+                  name="displayName"
+                  autocomplete="name"
+                  value="Alex Morgan"
+                >
+              </div>
+              <div class="field">
+                <label class="field-label" for="email-address">EMAIL ADDRESS</label>
+                <input
+                  class="input"
+                  id="email-address"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  value="alex@example.test"
+                >
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field-label" for="digest-frequency">EMAIL DIGEST FREQUENCY</label>
+              <select class="input" id="digest-frequency" name="digest">
+                <option>Daily</option>
+                <option selected>Weekly</option>
+                <option>Never</option>
+              </select>
+            </div>
+
+            <label class="action-row" for="product-updates">
+              <input id="product-updates" name="productUpdates" type="checkbox" checked>
+              <span class="muted">Send me product updates</span>
+            </label>
+
+            <div class="action-row">
+              <button class="button" type="submit">Save preferences</button>
+            </div>
+            <div id="preferences-status" class="result-line" role="status" aria-live="polite"></div>
+          </form>
+
+          <aside class="demo-card">
+            <p class="field-label">CHANGED ELEMENTS</p>
+            <p class="muted">
+              Previous label: “Display name”<br>
+              Current label: “Profile name”<br>
+              Field value: Alex Morgan
+            </p>
+            <span class="state-pill">LIVE PAGE</span>
+          </aside>
+        </div>
+      </section>
+
+      <footer class="scenario-footer">
+        <span>CHANGED LABEL: Display name → Profile name</span>
+        <a href="element-state.html">NEXT SCENARIO →</a>
+      </footer>
+    </main>
+
+    <script src="../assets/app.js"></script>
+    <script>
+      document.getElementById('preferences-form').addEventListener('submit', event => {
+        event.preventDefault();
+        document.getElementById('preferences-status').textContent = 'Preferences saved successfully.';
+      });
+    </script>
+  </body>
+</html>
