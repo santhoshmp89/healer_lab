@@ -1,1 +1,61 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Overlay blocks interaction — Healer Lab</title><link rel="stylesheet" href="../assets/styles.css"></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">H</span> Healer Lab</a><span class="topbar-note">SCENARIO 06 / 07</span></header><main class="page-shell"><a class="back-link" href="../index.html">← ALL SCENARIOS</a><header class="page-header"><div><p class="scenario-kicker">SCENARIO 06 · OVERLAY</p><h1>Overlay blocks interaction</h1><p>A dialog opens on page load and prevents interaction with the content behind it until you dismiss or accept it.</p></div><span class="scenario-index">06 / 07</span></header><section class="demo-panel"><h2>Account dashboard</h2><p>Try to interact with the dashboard after resolving the dialog.</p><div class="demo-card"><p class="field-label">YOUR WORKSPACE</p><h2>Welcome back, Alex</h2><p class="muted">Your workspace is ready. Choose an action to continue.</p><div class="action-row"><button class="button" type="button" data-reveal="dashboard-result">Open reports</button><button class="button secondary" type="button" data-reveal="dashboard-result">Manage team</button></div><div id="dashboard-result" class="notice" role="status" hidden>Dashboard action selected.</div></div></section><footer class="scenario-footer"><span>MODAL TARGET: welcome-dialog · close-button</span><a href="frame-context.html">NEXT SCENARIO →</a></footer></main><div class="modal-backdrop" id="welcome-overlay"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="dialog-title" aria-describedby="dialog-copy"><div class="modal-icon" aria-hidden="true">✦</div><button class="button ghost small" id="close-button" type="button" data-dismiss="welcome-overlay" aria-label="Close dialog" style="float:right;margin-top:-58px">Close ×</button><p class="scenario-kicker">WELCOME TO THE WORKSPACE</p><h2 id="dialog-title">Before you get started</h2><p id="dialog-copy">We’ve updated your workspace. Review the quick-start guide, or continue directly to your dashboard.</p><div class="action-row"><button class="button" id="continue-button" type="button" data-dismiss="welcome-overlay">Continue to dashboard</button><button class="button ghost" type="button" data-dismiss="welcome-overlay">View later</button></div></section></div><script src="../assets/app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Account dashboard — Healer Lab</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">H</span> Healer Lab
+      </a>
+      <span class="topbar-note">SCENARIO 06 / 07</span>
+    </header>
+
+    <main class="page-shell">
+      <a class="back-link" href="../index.html">← ALL SCENARIOS</a>
+
+      <header class="page-header">
+        <div>
+          <p class="scenario-kicker">SCENARIO 06 · ACCOUNT</p>
+          <h1>Account dashboard</h1>
+          <p>View your workspace and choose an action to continue.</p>
+        </div>
+        <span class="scenario-index">06 / 07</span>
+      </header>
+
+      <section class="demo-panel">
+        <h2>Workspace</h2>
+        <p>Your account overview is ready.</p>
+
+        <div class="demo-card">
+          <p class="field-label">YOUR WORKSPACE</p>
+          <h2>Welcome back, Alex</h2>
+          <p class="muted">Your workspace is ready. Choose an action to continue.</p>
+
+          <div class="action-row">
+            <button class="button" type="button" data-reveal="dashboard-result">
+              Open reports
+            </button>
+            <button class="button secondary" type="button" data-reveal="dashboard-result">
+              Manage team
+            </button>
+          </div>
+
+          <div id="dashboard-result" class="notice" role="status" hidden>
+            Dashboard action selected.
+          </div>
+        </div>
+      </section>
+
+      <footer class="scenario-footer">
+        <span>WORKSPACE: account dashboard</span>
+        <a href="frame-context.html">NEXT SCENARIO →</a>
+      </footer>
+    </main>
+
+    <script src="../assets/app.js"></script>
+  </body>
+</html>
