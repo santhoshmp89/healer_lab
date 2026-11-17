@@ -1,1 +1,73 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Element state or timing — Healer Lab</title><link rel="stylesheet" href="../assets/styles.css"></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">H</span> Healer Lab</a><span class="topbar-note">SCENARIO 04 / 07</span></header><main class="page-shell"><a class="back-link" href="../index.html">← ALL SCENARIOS</a><header class="page-header"><div><p class="scenario-kicker">SCENARIO 04 · ASYNC STATE</p><h1>Element state or timing</h1><p>Start a simulated sync and wait for its asynchronous state change before checking the final result.</p></div><span class="scenario-index">04 / 07</span></header><section class="demo-panel"><h2>Workspace sync</h2><p>The operation takes about 1.8 seconds to complete.</p><div class="demo-layout"><div class="demo-card"><p class="field-label">CURRENT STATUS</p><span class="state-pill" id="sync-status" data-testid="sync-status">READY</span><div class="action-row"><button class="button" type="button" id="start-sync">Start sync</button></div></div><div class="demo-card"><p class="field-label">LATEST RESULT</p><p class="muted" id="sync-result" aria-live="polite">No sync has been run yet.</p><div id="sync-done" class="notice" role="status" hidden>Workspace is up to date.</div></div></div></section><footer class="scenario-footer"><span>ASYNC TARGET: start-sync → sync-status COMPLETE</span><a href="overlay.html">NEXT SCENARIO →</a></footer></main><script src="../assets/app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Element state or timing — Healer Lab</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">H</span> Healer Lab
+      </a>
+      <span class="topbar-note">SCENARIO 04 / 07</span>
+    </header>
+
+    <main class="page-shell">
+      <a class="back-link" href="../index.html">← ALL SCENARIOS</a>
+
+      <header class="page-header">
+        <div>
+          <p class="scenario-kicker">SCENARIO 04 · ASYNC STATE</p>
+          <h1>Element state or timing</h1>
+          <p>
+            The sync status label has changed. Start a simulated sync and wait
+            for its asynchronous state change before checking the final result.
+          </p>
+        </div>
+        <span class="scenario-index">04 / 07</span>
+      </header>
+
+      <section class="demo-panel">
+        <h2>Workspace sync</h2>
+        <p>The operation takes about 1.8 seconds to complete.</p>
+
+        <div class="demo-layout">
+          <div class="demo-card">
+            <p class="field-label">CURRENT STATUS</p>
+            <span class="state-pill" id="sync-status" data-testid="sync-status">IDLE</span>
+            <div class="action-row">
+              <button class="button" type="button" id="start-sync">Start sync</button>
+            </div>
+          </div>
+
+          <aside class="demo-card">
+            <p class="field-label">CHANGED ELEMENTS</p>
+            <p class="muted">
+              Expected initial status: “READY”<br>
+              Current initial status: “IDLE”<br>
+              Status test identifier: <code>sync-status</code>
+            </p>
+            <span class="state-pill">LIVE PAGE</span>
+          </aside>
+
+          <div class="demo-card">
+            <p class="field-label">LATEST RESULT</p>
+            <p class="muted" id="sync-result" aria-live="polite">No sync has been run yet.</p>
+            <div id="sync-done" class="notice" role="status" hidden>
+              Workspace is up to date.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="scenario-footer">
+        <span>ASYNC TARGET: start-sync → sync-status COMPLETE</span>
+        <a href="overlay.html">NEXT SCENARIO →</a>
+      </footer>
+    </main>
+
+    <script src="../assets/app.js"></script>
+  </body>
+</html>
