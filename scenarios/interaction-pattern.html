@@ -3,125 +3,75 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Interaction pattern changed — Healer Lab</title>
+  <title>Quick checkout — Healer Lab</title>
   <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="../index.html"><span class="brand-mark">H</span> Healer Lab</a>
-    <span class="topbar-note">SCENARIO 05 / 07</span>
+    <span class="topbar-note">QUICK CHECKOUT</span>
   </header>
 
   <main class="page-shell">
     <a class="back-link" href="../index.html">← ALL SCENARIOS</a>
 
-    <header class="page-header">
-      <div>
-        <p class="scenario-kicker">SCENARIO 05 · INTERACTION FLOW</p>
-        <h1>Interaction pattern changed</h1>
-        <p>Adjust the item quantity, then complete checkout through shipping and payment.</p>
-      </div>
-      <span class="scenario-index">05 / 07</span>
-    </header>
+    <section class="demo-panel" aria-labelledby="checkout-title">
+      <h1 id="checkout-title">Quick checkout</h1>
+      <p>Set the quantity for your item, then continue to checkout.</p>
 
-    <section class="demo-panel">
-      <h2>Quick checkout</h2>
-      <p>Change the quantity before continuing through checkout.</p>
-
-      <div id="checkout-product" class="demo-card">
+      <article class="demo-card" aria-label="Everyday Bottle product">
         <div class="product-row">
           <div class="product-art" aria-hidden="true">◉</div>
           <div>
-            <h3>Everyday Bottle</h3>
+            <h2>Everyday Bottle</h2>
             <p>Insulated steel · 500 ml</p>
           </div>
-          <span class="product-price">$24.00</span>
+          <span class="product-price">$24.00 each</span>
         </div>
+
+        <div class="action-row quantity-control" aria-label="Product quantity controls">
+          <button class="button secondary" id="decrease-quantity" type="button" aria-label="Decrease quantity">−</button>
+          <span id="quantity-value" class="quantity-value" aria-live="polite">1</span>
+          <button class="button secondary" id="increase-quantity" type="button" aria-label="Increase quantity">+</button>
+        </div>
+
+        <p class="muted">Item count: <strong id="item-count" aria-live="polite">1</strong></p>
+        <p class="muted">Order total: <strong id="order-total">$24.00</strong></p>
 
         <div class="action-row">
-          <span class="field-label">QUANTITY</span>
-          <div class="quantity-control">
-            <button class="button secondary small" type="button" data-decrease aria-label="Decrease quantity">−</button>
-            <span class="quantity-value" id="quantity-value" aria-live="polite">1</span>
-            <button class="button secondary small" type="button" data-quantity aria-label="Increase quantity">+</button>
-          </div>
+          <button class="button" id="checkout-button" type="button">Checkout</button>
         </div>
-
-        <p id="quantity-status" class="result-line" aria-live="polite"></p>
-
-        <div class="action-row">
-          <span class="muted">Order total</span>
-          <strong id="order-total" class="product-price">$24.00</strong>
-        </div>
-
-        <div class="action-row">
-          <button id="begin-checkout" class="button" type="button" data-reveal="checkout-step-one">Continue to checkout</button>
-        </div>
-      </div>
-
-      <div id="checkout-step-one" class="demo-card" hidden>
-        <p class="step-label">STEP 1 OF 2 · SHIPPING</p>
-        <h2>Where should we send it?</h2>
-        <div class="field">
-          <label class="field-label" for="shipping-address">SHIPPING ADDRESS</label>
-          <input id="shipping-address" class="input" autocomplete="street-address" placeholder="42 Market Street">
-        </div>
-        <div class="action-row">
-          <button class="button" type="button" data-reveal="checkout-step-two">Continue to payment</button>
-        </div>
-      </div>
-
-      <div id="checkout-step-two" class="demo-card" hidden>
-        <p class="step-label">STEP 2 OF 2 · PAYMENT</p>
-        <h2>Review your order</h2>
-        <p class="muted">
-          Everyday Bottle · <span id="review-quantity">1</span> item(s) ·
-          <span id="review-total">$24.00</span>
-        </p>
-        <div class="field">
-          <label class="field-label" for="card-number">CARD NUMBER</label>
-          <input id="card-number" class="input" inputmode="numeric" placeholder="4242 4242 4242 4242">
-        </div>
-        <div class="action-row">
-          <button id="place-order" class="button" type="button" data-reveal="order-confirmation">Place order</button>
-        </div>
-      </div>
-
-      <div id="order-confirmation" class="notice" role="status" hidden>
-        Order placed. Thanks for your purchase!
-      </div>
+        <p id="checkout-status" class="result-line" role="status" aria-live="polite"></p>
+      </article>
     </section>
-
-    <footer class="scenario-footer">
-      <span>FLOW TARGET: quantity · shipping · payment</span>
-      <a href="overlay.html">NEXT SCENARIO →</a>
-    </footer>
   </main>
 
-  <script src="../assets/app.js"></script>
   <script>
     const quantityValue = document.getElementById('quantity-value');
+    const itemCount = document.getElementById('item-count');
     const orderTotal = document.getElementById('order-total');
-    const reviewQuantity = document.getElementById('review-quantity');
-    const reviewTotal = document.getElementById('review-total');
+    const checkoutStatus = document.getElementById('checkout-status');
+    const unitPrice = 24;
 
-    function syncOrderSummary() {
-      const quantity = Number(quantityValue.textContent);
-      const total = `$${(24 * quantity).toFixed(2)}`;
-      orderTotal.textContent = total;
-      reviewQuantity.textContent = String(quantity);
-      reviewTotal.textContent = total;
+    function updateOrder(quantity) {
+      const safeQuantity = Math.max(1, quantity);
+      quantityValue.textContent = String(safeQuantity);
+      itemCount.textContent = String(safeQuantity);
+      orderTotal.textContent = `$${(unitPrice * safeQuantity).toFixed(2)}`;
+      checkoutStatus.textContent = '';
     }
 
-    document.querySelector('[data-decrease]').addEventListener('click', () => {
-      const quantity = Math.max(1, Number(quantityValue.textContent) - 1);
-      quantityValue.textContent = String(quantity);
-      document.getElementById('quantity-status').textContent = `Quantity updated to ${quantity}.`;
-      syncOrderSummary();
+    document.getElementById('increase-quantity').addEventListener('click', () => {
+      updateOrder(Number(quantityValue.textContent) + 1);
     });
 
-    document.querySelector('[data-quantity]').addEventListener('click', () => {
-      syncOrderSummary();
+    document.getElementById('decrease-quantity').addEventListener('click', () => {
+      updateOrder(Number(quantityValue.textContent) - 1);
+    });
+
+    document.getElementById('checkout-button').addEventListener('click', () => {
+      const count = Number(quantityValue.textContent);
+      checkoutStatus.textContent = `Checkout started for ${count} ${count === 1 ? 'item' : 'items'}.`;
     });
   </script>
 </body>
