@@ -10,7 +10,9 @@ await supportFrame.getByRole('button', { name: 'Send request' }).click();
 await expect(supportFrame.getByRole('status')).toHaveText('Support request sent.');
 
 // Open the external documentation link in a separate tab and verify its destination.
+const documentationLink = page.locator('a[href="https://example.com"]');
 const popupPromise = page.waitForEvent('popup');
-await page.getByRole('link', { name: 'Open documentation' }).click();
+await documentationLink.click();
 const popup = await popupPromise;
-await expect(popup).toHaveURL(/example\.com/);
+await popup.waitForLoadState('domcontentloaded');
+await expect(popup).toHaveURL(/^https:\/\/example\.com\/?(?:[?#]|$)/);
