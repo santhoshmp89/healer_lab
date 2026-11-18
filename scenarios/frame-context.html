@@ -1,1 +1,59 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Frame or window context � Healer Lab</title><link rel="stylesheet" href="../assets/styles.css"></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">H</span> Healer Lab</a><span class="topbar-note">SCENARIO 07 / 07</span></header><main class="page-shell"><a class="back-link" href="../index.html">? ALL SCENARIOS</a><header class="page-header"><div><p class="scenario-kicker">SCENARIO 07 � BROWSING CONTEXT</p><h1>Frame or window context changed</h1><p>Practice switching into an iframe to interact with its content and handling a link that opens a separate browser tab.</p></div><span class="scenario-index">07 / 07</span></header><section class="demo-panel"><h2>Embedded support and documentation</h2><p>The support form lives inside an iframe. The documentation link opens a new tab.</p><div class="demo-layout"><div><p class="field-label">EMBEDDED SUPPORT FORM</p><div class="frame-wrap"><div class="frame-caption">IFRAME � support-widget</div><iframe name="support-widget" title="Embedded support form" srcdoc="<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width'><style>body{margin:0;padding:18px;background:#111512;color:#edf1e9;font:13px Arial,sans-serif}label{display:block;color:#aab5a8;font:10px monospace;letter-spacing:.08em;margin:0 0 7px}input{box-sizing:border-box;width:100%;padding:10px;background:#191e1a;border:1px solid #3a443b;border-radius:5px;color:#edf1e9;margin:0 0 12px}button{padding:10px 13px;background:#b5ed74;border:0;border-radius:5px;color:#17200f;font-weight:bold;cursor:pointer}#status{color:#b5ed74;font:12px Arial;margin-top:12px}</style><form id='support-form'><label for='topic'>SUPPORT TOPIC</label><input id='topic' name='topic' aria-label='Support topic' placeholder='How can we help?'><button type='submit'>Send request</button><p id='status' role='status' aria-live='polite'></p></form><script>document.getElementById('support-form').addEventListener('submit',function(e){e.preventDefault();document.getElementById('status').textContent='Support request sent.'})<\/script></html>"></iframe></div></div><aside class="demo-card"><p class="field-label">SEPARATE TAB</p><p class="muted">This documentation link deliberately creates a new browsing context.</p><a class="button small" href="https://example.com" target="_blank" rel="noopener">Open documentation ?</a><p class="muted" style="margin-top:18px">The original page remains open in its current tab.</p></aside></div></section><footer class="scenario-footer"><span>CONTEXT TARGETS: support-widget iframe � new tab link</span><a href="../index.html">BACK TO INDEX ?</a></footer></main></body></html>
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frame or window context — Healer Lab</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html"><span class="brand-mark">H</span> Healer Lab</a>
+    <span class="topbar-note">SCENARIO 07 / 07</span>
+  </header>
+
+  <main class="page-shell">
+    <a class="back-link" href="../index.html">← ALL SCENARIOS</a>
+
+    <header class="page-header">
+      <div>
+        <p class="scenario-kicker">SCENARIO 07 · BROWSING CONTEXT</p>
+        <h1>Frame or window context changed</h1>
+        <p>Practice switching into an iframe to interact with its content and handling a link that opens a separate browser tab.</p>
+      </div>
+      <span class="scenario-index">07 / 07</span>
+    </header>
+
+    <section class="demo-panel">
+      <h2>Embedded support and documentation</h2>
+      <p>The support form lives inside an iframe. The documentation link opens a new tab.</p>
+
+      <div class="demo-layout">
+        <div>
+          <p class="field-label">EMBEDDED SUPPORT FORM</p>
+          <div class="frame-wrap">
+            <div class="frame-caption">IFRAME · support-center</div>
+            <iframe
+              name="support-center"
+              title="Embedded support form"
+              srcdoc="<!doctype html><html lang='en'><meta charset='utf-8'><meta name='viewport' content='width=device-width'><style>body{margin:0;padding:18px;background:#111512;color:#edf1e9;font:13px Arial,sans-serif}label{display:block;color:#aab5a8;font:10px monospace;letter-spacing:.08em;margin:0 0 7px}input{box-sizing:border-box;width:100%;padding:10px;background:#191e1a;border:1px solid #3a443b;border-radius:5px;color:#edf1e9;margin:0 0 12px}button{padding:10px 13px;background:#b5ed74;border:0;border-radius:5px;color:#17200f;font-weight:bold;cursor:pointer}#status{color:#b5ed74;font:12px Arial;margin-top:12px}</style><form id='support-form'><label for='topic'>SUPPORT TOPIC</label><input id='topic' name='topic' aria-label='Support topic' placeholder='How can we help?'><button type='submit'>Send request</button><p id='status' role='status' aria-live='polite'></p></form><script>document.getElementById('support-form').addEventListener('submit',function(e){e.preventDefault();document.getElementById('status').textContent='Support request sent.'})<\/script></html>">
+            </iframe>
+          </div>
+        </div>
+
+        <aside class="demo-card">
+          <p class="field-label">SEPARATE TAB</p>
+          <p class="muted">This documentation link deliberately creates a new browsing context.</p>
+          <a class="button small" href="https://example.com" target="_blank" rel="noopener">Open documentation ↗</a>
+          <p class="muted" style="margin-top:18px">The original page remains open in its current tab.</p>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="scenario-footer">
+      <span>CONTEXT TARGETS: support-center iframe · new tab link</span>
+      <a href="../index.html">BACK TO INDEX ↗</a>
+    </footer>
+  </main>
+</body>
+</html>
