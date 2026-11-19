@@ -22,8 +22,8 @@
           <p class="scenario-kicker">SCENARIO 02 · EXPECTATIONS</p>
           <h1>Expected element or text is absent</h1>
           <p>
-            The search page now displays a “Blue Ceramic Lamp” result, changing
-            the expected empty-results state.
+            No products match this search. The expected product is absent, so
+            use the empty state and its recovery action.
           </p>
         </div>
         <span class="scenario-index">02 / 07</span>
@@ -46,9 +46,9 @@
               >
             </div>
 
-            <article class="notice neutral" data-testid="search-result">
-              <strong>Blue Ceramic Lamp</strong><br>
-              Glazed stoneware · Warm white shade · $48.00
+            <article class="notice neutral" data-testid="empty-state">
+              <strong>No matching products</strong><br>
+              Try a different search.
             </article>
 
             <div class="action-row">
@@ -69,8 +69,8 @@
           <aside class="demo-card">
             <p class="field-label">CHANGED ELEMENTS</p>
             <p class="muted">
-              Search result: “Blue Ceramic Lamp” is now present<br>
-              Previous state: no matching products<br>
+              Search result: no matching products<br>
+              Expected product: absent<br>
               Search term: “blue ceramic lamp”
             </p>
             <span class="state-pill">LIVE PAGE</span>
@@ -79,7 +79,7 @@
       </section>
 
       <footer class="scenario-footer">
-        <span>SEARCH RESULT: Blue Ceramic Lamp</span>
+        <span>SEARCH RESULT: NO MATCHES</span>
         <a href="accessible-name.html">NEXT SCENARIO →</a>
       </footer>
     </main>
